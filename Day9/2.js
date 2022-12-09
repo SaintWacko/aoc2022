@@ -26,8 +26,8 @@ const move = (direction) => {
     diffX = knots[i][1] - knots[i+1][1] // and the next knot on the rope
     if ((Math.abs(diffY) > 1) || (Math.abs(diffX) > 1)) { // if they're not adjacent
       knots[i+1] = [ // move the trailing knot one space towards the leading knot
-        knots[i+1][0] + ((diffY / Math.abs(diffY)) || 0),
-        knots[i+1][1] + ((diffX / Math.abs(diffX)) || 0)
+        knots[i+1][0] + Math.sign(diffY),
+        knots[i+1][1] + Math.sign(diffX)
       ]
       if (i == knots.length - 2) visited.add(knots[i+1].join())
     }
